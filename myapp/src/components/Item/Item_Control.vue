@@ -1,5 +1,5 @@
 <template>
-  <button @click="deleteItem"> - </button>
+  <button @click="remove"> - </button>
 </template>
 
 <script>
@@ -7,17 +7,9 @@ export default {
 
   name: 'item-control',
 
-  data () {
-    return {
-    }
-  },
-
   methods: {
-    deleteItem: function (event) {
-      console.log('Item Control: deleting')
-      console.log('event var - ')
-      console.log(event)
-      this.$emit('deleteItem')
+    remove: function (event) {
+      this.$emit('removeItem')
     }
   }
 }

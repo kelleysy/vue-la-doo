@@ -1,46 +1,53 @@
 <template>
   <div class="container">
     <h1>{{ title }}</h1>
+    <add-item @addNewItem="addNewItem"></add-item>
     <ul>
+      <li v-if="items.length === 0">No items!</li>
       <item v-for="item in items"
-            :uid="item.id"
-            :labelText="item.text"
-            @deleteThisItem="deleteItem"></item>
+              :labelText="item.text"
+              :checked="item.checked"
+              @removeThisItem="removeItem"></item>
     </ul>
   </div>
 </template>
 
 <script>
 import Item from '@/components/Item/Item'
+import AddItem from '@/components/List/Add_Item'
 
 export default {
 
   name: 'list',
 
   components: {
-    Item
+    Item,
+    AddItem
   },
 
   data () {
     return {
       title: 'To Do List',
-      items: [
-        {id: 0, text: 'Take out the garbage'},
-        {id: 1, text: 'Feed the doggo'},
-        {id: 2, text: 'Pester the neigbor'},
-        {id: 3, text: 'Kung fu practice'}
-      ]
+      items: [{
+        text: 'Do the thing',
+        checked: false
+      }]
     }
   },
 
   methods: {
-    addNewItem: function () {
-
+    addNewItem: function (newItem) {
+      console.log('Adding - ')
+      console.log(newItem)
+      this.items.push(newItem)
     },
-    deleteItem: function (keyToDelete) {
+    removeItem: function (itemToDelete) {
       console.log('List: deleting')
-      console.log('key var -')
-      console.log(keyToDelete)
+      console.log('item var -')
+      console.log(itemToDelete)
+      let indexOfDelete = this.items.indexOf(itemToDelete)
+      console.log('index - ' + indexOfDelete)
+      this.items.splice(indexOfDelete, 1)
     }
   }
 }
