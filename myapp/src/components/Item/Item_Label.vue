@@ -1,11 +1,14 @@
 <template>
   <span>
-    <input type="text"  :value="labelText"
-                        @input="updateItemLabelText"/>
+    <input type="text" ref="labelText"
+      :value="this.labelText"
+      @input="updateItemLabelText"/>
   </span>
 </template>
 
 <script>
+import { EventBus } from '@/event-bus.js'
+
 export default {
 
   name: 'item-label',
@@ -14,7 +17,8 @@ export default {
 
   methods: {
     updateItemLabelText: function () {
-      this.$emit('updateItemLabelText', this, this.labelText)
+      console.log('emitting from label')
+      EventBus.$emit('updateItem', this.$parent, this.$refs.labelText.value)
     }
   }
 }

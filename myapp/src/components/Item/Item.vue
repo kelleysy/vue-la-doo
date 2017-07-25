@@ -3,13 +3,14 @@
     <h2>
       {{ item.text }}
     </h2>
-    <item-checkbox  :checked="item.checked">
+    <item-checkbox
+      :checked="item.checked">
     </item-checkbox>
     <item-label
-      :labelText="item.text"
-      @updateItemLabelText="updateItemLabelText">
+      :labelText="item.text">
     </item-label>
-    <item-control @removeItem="removeThisItem">
+    <item-control
+      @removeItem="removeThisItem">
     </item-control>
   </li>
 </template>
@@ -35,9 +36,6 @@ export default {
     removeThisItem: function () {
       console.log('Item: removing')
       this.$emit('removeThisItem', this.item)
-    },
-    updateItemLabelText: function (item, labelText) {
-      this.$emit('updateItemLabelText', item, labelText)
     }
   },
 

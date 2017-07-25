@@ -8,8 +8,10 @@
 <script>
 import List from '@/components/List/List'
 import AddItem from '@/components/List/Add_Item'
+import { EventBus } from '@/event-bus.js'
 
 export default {
+
   name: 'app',
 
   components: {
@@ -36,6 +38,10 @@ export default {
   },
 
   created: function () {
+    EventBus.$on('updateItem', function (item, labelText) {
+      console.log('updating in app')
+      item.text = labelText
+    })
   }
 }
 </script>
