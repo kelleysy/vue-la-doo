@@ -1,7 +1,6 @@
 <template>
   <div class="container">
     <h1>{{ title }}</h1>
-    <add-item @addNewItem="addNewItem"></add-item>
     <ul>
       <li v-if="items.length === 0">No items!</li>
       <item v-for="item in items"
@@ -14,40 +13,27 @@
 
 <script>
 import Item from '@/components/Item/Item'
-import AddItem from '@/components/List/Add_Item'
 
 export default {
 
   name: 'list',
 
+  props: ['items'],
+
   components: {
-    Item,
-    AddItem
+    Item
   },
 
   data () {
     return {
-      title: 'To Do List',
-      items: [{
-        text: 'Do the thing',
-        checked: false
-      }]
+      title: 'To Do List'
     }
   },
 
   methods: {
-    addNewItem: function (newItem) {
-      console.log('Adding - ')
-      console.log(newItem)
-      this.items.push(newItem)
-    },
     removeItem: function (itemToDelete) {
       console.log('List: deleting')
-      console.log('item var -')
-      console.log(itemToDelete)
-      let indexOfDelete = this.items.indexOf(itemToDelete)
-      console.log('index - ' + indexOfDelete)
-      this.items.splice(indexOfDelete, 1)
+      this.$emit('removeItem', itemToDelete)
     }
   }
 }
