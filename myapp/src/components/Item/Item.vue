@@ -1,9 +1,12 @@
 <template>
   <li>
-    <item-checkbox></item-checkbox>
+    <item-checkbox @updateChecked="updateChecked">
+    </item-checkbox>
     <item-label :labelText="labelText"
-                @updateItemLabelText="updateLabelText"></item-label>
-    <item-control @deleteItem="deleteThisItem"></item-control>
+                @updateItemLabelText="updateLabelText">
+    </item-label>
+    <item-control @deleteItem="deleteThisItem">
+    </item-control>
   </li>
 </template>
 
@@ -35,7 +38,7 @@ export default {
   methods: {
     deleteThisItem: function () {
       console.log('Item: deleting')
-      this.$emit('deleteThisItem', this.key)
+      this.$emit('deleteThisItem', this.id)
     },
     checkInfo: function () {
       console.log('=============Log================')
