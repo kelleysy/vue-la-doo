@@ -1,7 +1,6 @@
 <template>
   <div class="container">
     <h1>{{ title }}</h1>
-    <list-controls></list-controls>
     <ul>
       <item v-for="item in items"
             v-bind:labelText="item.text"></item>
@@ -11,15 +10,13 @@
 
 <script>
 import Item from '@/components/Item/Item'
-import ListControls from '@/components/List/List_Controls'
 
 export default {
 
   name: 'list',
 
   components: {
-    Item,
-    ListControls
+    Item
   },
 
   data () {
@@ -38,5 +35,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
+  ul{
+    list-style-type: none;
+  }
 </style>

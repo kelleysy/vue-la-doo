@@ -1,8 +1,7 @@
 <template>
   <div>
-    <control-knob></control-knob>
-    <control-knob></control-knob>
-    <control-knob></control-knob>
+    <control-knob>Add</control-knob>
+    <control-knob>Clear</control-knob>
   </div>
 </template>
 
