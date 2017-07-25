@@ -1,10 +1,13 @@
 <template>
   <li>
-    <item-checkbox  :checked="checked"
-                    @updateChecked="updateChecked">
+    <h2>
+      {{ item.text }}
+    </h2>
+    <item-checkbox  :checked="item.checked">
     </item-checkbox>
-    <item-label :labelText="labelText"
-                @updateItemLabelText="updateLabelText">
+    <item-label
+      :labelText="item.text"
+      @updateItemLabelText="updateItemLabelText">
     </item-label>
     <item-control @removeItem="removeThisItem">
     </item-control>
@@ -26,25 +29,15 @@ export default {
     ItemControl
   },
 
-  props: ['labelText', 'checked'],
-
-  data () {
-    return {
-      label: '',
-      isChecked: Boolean
-    }
-  },
+  props: ['item'],
 
   methods: {
     removeThisItem: function () {
       console.log('Item: removing')
-      this.$emit('removeThisItem', this)
+      this.$emit('removeThisItem', this.item)
     },
-    updateLabelText: function (newText) {
-      this.label = newText
-    },
-    updateChecked: function (isChecked) {
-      this.isChecked = isChecked
+    updateItemLabelText: function (item, labelText) {
+      this.$emit('updateItemLabelText', item, labelText)
     }
   },
 

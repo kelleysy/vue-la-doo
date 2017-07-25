@@ -1,7 +1,5 @@
 <template>
-  <input type="checkbox"  :checked="checked"
-                          v-model="isChecked"
-                          @click="updateChecked"/>
+  <input type="checkbox"  :checked="checked"/>
 </template>
 
 <script>
@@ -11,22 +9,10 @@ export default {
 
   props: ['checked'],
 
-  data () {
-    return {
-      isChecked: Boolean
-    }
-  },
-
   methods: {
-    updateChecked: function () {
-      this.$emit('updateChecked', this.isChecked)
-    }
-  },
 
-  created: function () {
-    this.isChecked = this.$props.checked
-    this.updateChecked()
   }
+
 }
 </script>
 

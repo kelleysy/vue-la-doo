@@ -1,7 +1,6 @@
 <template>
   <span>
     <input type="text"  :value="labelText"
-                        v-model="label"
                         @input="updateItemLabelText"/>
   </span>
 </template>
@@ -13,22 +12,10 @@ export default {
 
   props: ['labelText'],
 
-  data () {
-    return {
-      label: ''
-    }
-  },
-
   methods: {
     updateItemLabelText: function () {
-      this.$emit('updateItemLabelText', this.label)
+      this.$emit('updateItemLabelText', this, this.labelText)
     }
-  },
-
-  created: function () {
-    // console.log(this)
-    this.label = this.$props.labelText
-    this.updateItemLabelText()
   }
 }
 </script>

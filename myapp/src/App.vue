@@ -1,8 +1,7 @@
 <template>
   <div id="app">
     <add-item @addNewItem="addNewItem"></add-item>
-    <list :items="items"
-          @removeItem="removeItem"></list>
+    <list :items="items"></list>
   </div>
 </template>
 
@@ -22,7 +21,7 @@ export default {
     return {
       title: 'To Do List',
       items: [{
-        text: 'Do the thing',
+        text: 'Do the right thing',
         checked: true
       }]
     }
@@ -33,15 +32,10 @@ export default {
       console.log('Adding - ')
       console.log(newItem)
       this.items.push(newItem)
-    },
-    removeItem: function (itemToDelete) {
-      console.log('App: deleting')
-      console.log('item var -')
-      console.log(itemToDelete)
-      let indexOfDelete = this.items.indexOf(itemToDelete)
-      console.log('index - ' + indexOfDelete)
-      this.items.splice(indexOfDelete, 1)
     }
+  },
+
+  created: function () {
   }
 }
 </script>

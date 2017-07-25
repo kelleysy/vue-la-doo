@@ -3,10 +3,11 @@
     <h1>{{ title }}</h1>
     <ul>
       <li v-if="items.length === 0">No items!</li>
-      <item v-for="item in items"
-              :labelText="item.text"
-              :checked="item.checked"
-              @removeThisItem="removeItem"></item>
+      <item v-for="(item, index) in items"
+              :item.sync="item"
+              :key="index"
+              @removeThisItem="removeItem">
+      </item>
     </ul>
   </div>
 </template>
@@ -32,8 +33,9 @@ export default {
 
   methods: {
     removeItem: function (itemToDelete) {
-      console.log('List: deleting')
-      this.$emit('removeItem', itemToDelete)
+      console.log('App; removing ')
+      console.log(itemToDelete)
+      this.items.splice(this.items.indexOf(itemToDelete), 1)
     }
   }
 }
