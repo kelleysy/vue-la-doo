@@ -7,6 +7,8 @@ export default {
 
   name: 'item-checkbox',
 
+  props: ['checked'],
+
   data () {
     return {
     }

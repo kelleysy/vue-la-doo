@@ -3,7 +3,9 @@
     <h1>{{ title }}</h1>
     <ul>
       <item v-for="item in items"
-            v-bind:labelText="item.text"></item>
+            :uid="item.id"
+            :labelText="item.text"
+            @deleteThisItem="deleteItem"></item>
     </ul>
   </div>
 </template>
@@ -23,11 +25,22 @@ export default {
     return {
       title: 'To Do List',
       items: [
-        {text: 'Take out the garbage'},
-        {text: 'Feed the doggo'},
-        {text: 'Pester the neigbor'},
-        {text: 'Kung fu practice'}
+        {id: 0, text: 'Take out the garbage'},
+        {id: 1, text: 'Feed the doggo'},
+        {id: 2, text: 'Pester the neigbor'},
+        {id: 3, text: 'Kung fu practice'}
       ]
+    }
+  },
+
+  methods: {
+    addNewItem: function () {
+
+    },
+    deleteItem: function (keyToDelete) {
+      console.log('List: deleting')
+      console.log('key var -')
+      console.log(keyToDelete)
     }
   }
 }
